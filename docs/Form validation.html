@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <title>Form validation</title>
+    <link rel="stylesheet" href="Style.css">
+    <script>
+      function validateform(){  
+        var name=document.myform.name.value;  
+        var matricno=document.myform.matricno.value;
+        var password=document.myform.password.value;
+        var confirmpassword=document.myform.confirmpassword.value;
+        
+        if (name==null || name==""){  
+          alert("fill in your Name");  
+          return false;  
+        }
+        else if(matricno== null || matricno==""){
+          alert("fill in your Matric number");  
+          return false; 
+        }
+        else if(matricno.length<6){  
+          alert("Matric number must be 6 number long.");  
+          return false;  
+        }
+        else if(matricno.length>6){  
+          alert("Matric number is too long");  
+          return false;  
+        }
+        else if(password.length<5){  
+          alert("Password is too weak");  
+          return false;  
+        }
+        else if(password!=confirmpassword){  
+          alert("Password does not match");  
+          return false;  
+        }
+        if (/^[a-zA-Z ]+$/.test(name)) {
+          if (/^[0-9]+$/.test(matricno)) {
+            console.log("Valid input");
+          } else {
+            alert("Matric number contains other characters");
+            return false;
+          }
+        } 
+        else {
+        alert("Name contains numbers or other characters");
+        return false;
+       }
+      } 
+    </script>
+<body>
+    <div class="login-box">
+      <h2>login</h2>
+      <form name="myform" method="post" > 
+        <div class="container">
+          <input type="text" name="name" id="name"><br/>
+          <label for="name">Name</label> 
+         </div>    
+         <div class="container">
+          <input type="text" name="matric no" id="matricno"><br/>
+          <label for="name">Matric No</label> 
+         </div>  
+         <div class="container">
+          <input type="password" name="password" id="password"><br/>
+          <label for="name">Password</label> 
+         </div>  
+         <div class="container">
+          <input type="password" name="confirm password" id="confirmpassword"><br/>
+          <label for="name">Confirm Password</label> 
+         </div>   
+          <button type="submit" class="button1" role="button" onclick="return validateform()">Submit</button>   
+    </div> 
+      </form>
+</div>
+
+</form>
+</body>
+</html>
